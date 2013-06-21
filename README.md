@@ -6,15 +6,15 @@ My personal Vim configuration.
 
 1. Download this repository:
 
-    git clone https://github.com/cjhoward/vimrc.git
+        git clone https://github.com/cjhoward/vimrc.git
 
 2. Add the following to `~/.vimrc`:
 
-    source /path/to/vimrc/vimrc
+        source /path/to/vimrc/vimrc
 
 3. Download submodules:
 
-    git submodule update --init
+        git submodule update --init
 
 ## License
 

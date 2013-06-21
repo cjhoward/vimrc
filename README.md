@@ -18,5 +18,5 @@ My personal Vim configuration.
 
 ## License
 
-This Vim configuration is distributed under the GNU General Public License, Version 3. See [COPYING](./COPYING) for details.
+This Vim configuration is distributed under the GNU General Public License, version 3. See [COPYING](./COPYING) for details.
 

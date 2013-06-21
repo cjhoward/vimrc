@@ -1,0 +1,6 @@
+[submodule "vim/bundle/dogday"]
+	path = vim/bundle/dogday
+	url = https://github.com/cjhoward/dog-day.git
+[submodule "vim/bundle/pathogen"]
+	path = vim/bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen.git

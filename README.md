@@ -4,7 +4,7 @@ My personal Vim configuration.
 
 ## Installation
 
-1. Download this configuration:
+1. Download this repository and its submodules:
 
         git clone https://github.com/cjhoward/vimrc.git
         cd vimrc

@@ -54,6 +54,9 @@ set undolevels=1024
 set wildmenu
 set nonumber
 
+" Disable autocomments
+autocmd FileType * setlocal formatoptions-=cro
+
 " Disable alerts
 set noerrorbells
 set visualbell

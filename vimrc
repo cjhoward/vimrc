@@ -92,7 +92,7 @@ set noesckeys
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 
-" Autocorrect a frequent typo
+" Autocorrect :W -> :w
 command W w
 
 " Switch window and maximize

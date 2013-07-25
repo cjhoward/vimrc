@@ -109,3 +109,6 @@ function! OpenComplement()
 endfunction
 
 nmap ,o :call OpenComplement()<CR>
+
+" m -> !make
+nmap m :!make<CR>

@@ -44,7 +44,7 @@ set noexpandtab
 set tabstop=4
 set shiftwidth=4
 set autoindent
-set smartindent
+set nosmartindent
 
 " Configure navigation
 set ruler
@@ -56,6 +56,9 @@ set nonumber
 
 " Disable autocomments
 autocmd FileType * setlocal formatoptions-=cro
+
+" Set syntax highlighting for .md files
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " Disable alerts
 set noerrorbells

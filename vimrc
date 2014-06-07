@@ -37,7 +37,7 @@ set noswapfile
 
 " Enable autoreload
 set autoread
-autocmd bufwritepost vimrc source %
+autocmd! bufwritepost vimrc source %
 
 " Configure indentation
 filetype indent off
@@ -61,7 +61,7 @@ nnoremap j gj
 nnoremap k gk
 
 " Disable autocomments
-autocmd FileType * setlocal formatoptions-=cro
+autocmd! FileType * setlocal formatoptions-=cro
 
 " Set syntax highlighting for .md files
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -71,16 +71,18 @@ set noerrorbells
 set visualbell
 set t_vb=
 
+" Set font and background
+if has('gui_running')
+	set guifont=Inconsolata:h14
+	set background=light
+else
+	set background=dark
+endif
+
 " Set colors
 syntax on
 set hlsearch
 colorscheme solarized
-set background=light
-
-" Set font
-if has('gui_running')
-	set guifont=Inconsolata:h14
-endif
 
 " Sets cursorline and cursorcolumn for the active window
 augroup ActiveWindowCrosshair

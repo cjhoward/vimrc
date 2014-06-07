@@ -1,4 +1,4 @@
-" Copyright (C) 2013  Chris Howard
+" Copyright (C) 2013-2014  Christopher J. Howard
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ filetype off
 exe "source" . g:bundle_path . "/pathogen/autoload/pathogen.vim"
 call pathogen#infect(g:bundle_path . "/{}")
 call pathogen#helptags()
-filetype plugin indent on
+filetype plugin on
 
 " Use UTF-8 encoding
 set encoding=utf-8
@@ -37,9 +37,10 @@ set noswapfile
 
 " Enable autoreload
 set autoread
-autocmd! bufwritepost .vimrc source ~/.vimrc
+autocmd bufwritepost vimrc source %
 
-" Configure tabs
+" Configure indentation
+filetype indent off
 set noexpandtab
 set tabstop=4
 set shiftwidth=4
@@ -52,7 +53,12 @@ set scrolloff=5
 set history=256
 set undolevels=1024
 set wildmenu
-set nonumber
+set number
+
+" Line wrap
+set wrap
+nnoremap j gj
+nnoremap k gk
 
 " Disable autocomments
 autocmd FileType * setlocal formatoptions-=cro
@@ -68,7 +74,8 @@ set t_vb=
 " Set colors
 syntax on
 set hlsearch
-colorscheme dog-day
+colorscheme solarized
+set background=light
 
 " Set font
 if has('gui_running')
@@ -96,7 +103,7 @@ map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 
 " Autocorrect :W -> :w
-command W w
+command! W w
 
 " Switch window and maximize
 map ,w :wincmd w <bar> wincmd <bar><CR>

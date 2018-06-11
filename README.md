@@ -4,7 +4,12 @@ My personal Vim configuration.
 
 ## Installation
 
-1. Download this repository and its submodules:
+1. Install dependencies
+	
+* `exuberant-ctags`
+* `curl`
+
+2. Download this repository and its submodules:
 
         git clone https://github.com/cjhoward/vimrc.git
         cd vimrc

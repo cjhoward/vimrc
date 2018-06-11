@@ -1,4 +1,4 @@
-" Copyright (C) 2013-2014  Christopher J. Howard
+" Copyright (C) 2013-2018  Christopher J. Howard
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
@@ -16,16 +16,28 @@
 " No compatibility with vi
 set nocompatible
 
-" Find directories
-let g:vim_path = escape(fnamemodify(resolve(expand("<sfile>:p")), ":h"), ' ') . "/vim"
-let g:bundle_path = g:vim_path . "/bundle"
+" Install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Pathogen
-filetype off
-exe "source" . g:bundle_path . "/pathogen/autoload/pathogen.vim"
-call pathogen#infect(g:bundle_path . "/{}")
-call pathogen#helptags()
-filetype plugin on
+" Install plugins
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Shougo/vinarise.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/a.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'nelstrom/vim-markdown-folding'
+call plug#end()
 
 " Use UTF-8 encoding
 set encoding=utf-8
@@ -34,10 +46,6 @@ set encoding=utf-8
 set nobackup
 set nowritebackup
 set noswapfile
-
-" Enable autoreload
-set autoread
-autocmd! bufwritepost vimrc source %
 
 " Configure indentation
 filetype indent off
@@ -60,67 +68,22 @@ set wrap
 nnoremap j gj
 nnoremap k gk
 
-" Disable autocomments
-autocmd! FileType * setlocal formatoptions-=cro
-
-" Set syntax highlighting for .md files
-au BufRead,BufNewFile *.md set filetype=markdown
-
 " Disable alerts
 set noerrorbells
 set visualbell
 set t_vb=
 
-" Set font and background
-if has('gui_running')
-	set guifont=Inconsolata:h14
-	set background=light
-else
-	set background=dark
-endif
-
-" Set colors
-syntax on
-set hlsearch
-colorscheme solarized
-
-" Sets cursorline and cursorcolumn for the active window
-augroup ActiveWindowCrosshair
-	autocmd!
-	autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline nocursorcolumn
-	autocmd WinLeave * setlocal nocursorline nocursorcolumn
-augroup END
-
-" Disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
 " Disable escape keys
 set noesckeys
+
+" Autocorrect :W -> :w
+command! W w
+
+" Toggle NERDTree and Tagbar
+map <C-n> :NERDTreeToggle<CR>
+map <C-t> :TagbarToggle<CR>
 
 " Quick tab navigation
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 
-" Autocorrect :W -> :w
-command! W w
-
-" Switch window and maximize
-map ,w :wincmd w <bar> wincmd <bar><CR>
-
-" Opens a complementary C++ file
-function! OpenComplement()
-	if expand("%:e") == "cpp"
-		exe "vsplit" fnameescape(expand("%:p:r:s?src?include?").".hpp")
-	elseif expand("%:e") == "hpp"
-		exe "vsplit" fnameescape(expand("%:p:r:s?include?src?").".cpp")
-		wincmd x
-	endif
-endfunction
-
-nmap ,o :call OpenComplement()<CR>
-
-" m -> !make
-nmap m :!make<CR>

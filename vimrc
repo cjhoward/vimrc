@@ -37,6 +37,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/a.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nelstrom/vim-markdown-folding'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " Use UTF-8 encoding
@@ -87,3 +88,13 @@ map <C-t> :TagbarToggle<CR>
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 
+" Set colortheme
+set t_Co=256
+let base16colorspace=256
+color base16-google-dark
+
+" GVim
+set guioptions-=m " Remove menu bar
+set guioptions-=T " Remove toolbar
+set guioptions-=r " Remove right-hand scroll bar
+set guioptions-=L " Remove left-hand scroll bar

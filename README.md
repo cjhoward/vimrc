@@ -4,7 +4,7 @@ My personal Vim configuration.
 
 ## Installation
 
-1. Install dependencies
+1. Install dependencies:
 	
 * `exuberant-ctags`
 * `curl`

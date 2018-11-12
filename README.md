@@ -8,6 +8,8 @@ My personal Vim configuration.
 	
 * `exuberant-ctags`
 * `curl`
+* `libclang`
+* `ycm_core`
 
 2. Download this repository and its submodules:
 

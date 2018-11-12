@@ -36,7 +36,6 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/a.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'nelstrom/vim-markdown-folding'
 Plug 'chriskempson/base16-vim'
 call plug#end()
 
